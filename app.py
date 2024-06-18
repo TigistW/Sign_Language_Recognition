@@ -53,4 +53,10 @@ imag = "3001.jpg"
 preprocessed = preprocess(imag)
 ans = predict(preprocessed)
 
-print("Answer: ", ans)
+import pickle
+
+# Load the LabelBinarizer from the saved file
+with open('label_binarizer.pkl', 'rb') as f:
+    lb = pickle.load(f)
+original_labels = lb.inverse_transform(ans)
+print(original_labels)
